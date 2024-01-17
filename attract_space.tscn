@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://78aap73qf20n"]
+
+[ext_resource type="Script" path="res://attract_space.gd" id="1_h2ex8"]
+
+[node name="AttractSpace" type="Node2D"]
+script = ExtResource("1_h2ex8")

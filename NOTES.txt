@@ -1,0 +1,20 @@
+
+Menu
+
+Player1
+    Brain
+        Human
+        AI1
+        AI2
+    Color
+
+Player2
+    Human
+    AI1
+    AI2
+
+AI Think Speed
+
+Start
+
+Resume

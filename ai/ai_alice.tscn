@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c06aftvuhvlou"]
+
+[ext_resource type="PackedScene" uid="uid://cj7kyi333a81g" path="res://ai/ai.tscn" id="1_vwm4a"]
+[ext_resource type="Script" path="res://ai/ai_alice.gd" id="2_wn5b4"]
+
+[node name="AI" instance=ExtResource("1_vwm4a")]
+script = ExtResource("2_wn5b4")

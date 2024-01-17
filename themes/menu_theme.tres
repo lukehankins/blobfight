@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dih8wuyrjs40l"]
+
+[ext_resource type="FontFile" uid="uid://c48wgsk5fybfk" path="res://themes/fonts/PS_Hyperspace/Hyperspace Bold.otf" id="1_ewgbj"]
+
+[resource]
+default_font = ExtResource("1_ewgbj")
+default_font_size = 64
