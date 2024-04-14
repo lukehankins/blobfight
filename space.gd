@@ -97,7 +97,7 @@ func _check_for_end_of_game() -> void:
 			teams_alive.append(p.team)
 	if teams_alive.size() == 1:
 		print("GAME OVER: "+teams_alive[0]+" WINS")
-		Global.game_mode = Global.GameMode.GAME_OVER
+		Global.game_mode = Global.GameMode.ATTRACT
 		start()
 
 func _process(_delta: float) -> void:

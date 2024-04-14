@@ -22,11 +22,16 @@ func _ready():
 	# background.rect_size = display_size
 	add_child(background)
 
+	# Vertical box holding the menu
+	var vbox: VBoxContainer = VBoxContainer.new()
+	add_child(vbox)
+
 	# Horizontal box holding the menu
 	var hbox: HBoxContainer = HBoxContainer.new()
-	add_child(hbox)
+	vbox.add_child(hbox)
+	hbox.add_theme_constant_override("separation", 60)
 
-	# Vertical box holding the menu
+	# Vertical box holding the menu items
 	var vbox_left: VBoxContainer = VBoxContainer.new()
 	hbox.add_child(vbox_left)
 	var vbox_middle: VBoxContainer = VBoxContainer.new()
@@ -86,13 +91,34 @@ func _ready():
 	ai_parallelism_label.set_text("AI Parallelism")
 	vbox_left.add_child(ai_parallelism_label)
 	
+	# TODO: Figure out how to center the slider
+	var ai_parallelism_label_vbox: VBoxContainer = VBoxContainer.new()
+	vbox_middle.add_child(ai_parallelism_label_vbox)
+
 	var ai_parallelism_options: HSlider = HSlider.new()
 	ai_parallelism_options.set_min(1)
 	ai_parallelism_options.set_max(8)
 	ai_parallelism_options.set_step(1)
 	ai_parallelism_options.set_value(1)
-	vbox_middle.add_child(ai_parallelism_options)
+	ai_parallelism_label_vbox.add_child(ai_parallelism_options)
 
+	if Global.game_mode == Global.GameMode.ATTRACT:
+		var instructions_start_label: Label = Label.new()
+		instructions_start_label.set_text("Press <enter> to start")
+		vbox.add_child(instructions_start_label)
+
+	if Global.game_mode == Global.GameMode.PAUSED:
+		var instructions_reset_label: Label = Label.new()
+		instructions_reset_label.set_text("Press <r> to reset")
+		vbox.add_child(instructions_reset_label)
+
+	var instructions_pause_label: Label = Label.new()
+	instructions_pause_label.set_text("Press <p> to pause/unpause")
+	vbox.add_child(instructions_pause_label)
+
+	var instructions_quit_label: Label = Label.new()
+	instructions_quit_label.set_text("Press <q> to quit")
+	vbox.add_child(instructions_quit_label)
 
 	# var f = load("res://fonts/PS_Hyperspace/Hyperspace.otf")
 	# add_theme_font_override("font", f)
@@ -108,8 +134,13 @@ func _ready():
 func _input(event):
 	if event is InputEventKey and event.is_action_pressed("ui_pause"):
 		Global.game_paused = !Global.game_paused
-	if event is InputEventKey and event.is_action_pressed("ui_accept"):
+	if event is InputEventKey and event.is_action_pressed("ui_quit"):
+		get_tree().quit()
+	if event is InputEventKey and event.is_action_pressed("ui_accept") and Global.game_mode != Global.GameMode.PLAYING:
 		Global.game_mode = Global.GameMode.PLAYING
+		get_parent().start()
+	if event is InputEventKey and event.is_action_pressed("ui_reset") and Global.game_mode == Global.GameMode.PLAYING:
+		Global.game_mode = Global.GameMode.ATTRACT
 		get_parent().start()
 
 
