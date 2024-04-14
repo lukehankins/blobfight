@@ -14,10 +14,7 @@ Left click to select a planet (shift to multi-select), right click to send the f
 
 ## Built With
 * The [The Godot Engine](https://godotengine.org/)
-
-## Thanks To
-
-* [retrogamedeconstructionzone.com](http://www.retrogamedeconstructionzone.com/2019/10/asteroids-by-numbers.html), for an article with some useful numbers
+* [Hyperspace](https://www.pixelsagas.com/?download=hyperspace) - an awesome font from Pixel Sagas
 
 ## Authors
 
